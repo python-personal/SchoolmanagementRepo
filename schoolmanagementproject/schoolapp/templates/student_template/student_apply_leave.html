@@ -1,0 +1,76 @@
+{%extends 'student_template/base_template.html'%}
+{% load static%}
+{% block base%}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/staff_style.css" %}">
+
+{% endblock custom_css %}
+{% include 'hod_template/messages.html'%}
+
+<h3 class='head'>Take Attendance</h3>
+
+<div class="container">
+
+<div class="card mt-4">
+  <div class="card-header main">Leave Details</div>
+
+  <form class="" method='POST' >
+{%csrf_token%}
+  <div class="card-body">
+    <div class="form-group">
+      <label for="validationCustom10">Leave Date</label>
+      <input type="date" class="form-control" name="leave_date"  placeholder="mm/dd/yy" type="datetime-local" >
+
+    </div>
+    <div class="form-group">
+      <label for="validationCustom10">Reason</label>
+      <textarea  rows="8" cols="80" placeholder="Reason for leave.." name="reason" class="form-control"></textarea>
+    </div>
+      <button type="submit" class="btn btn-primary btn-block" id="fetch_student">Apply for leave</button>
+    </div>
+
+  </form>
+
+  </div>
+
+  <div class="card mt-4">
+    <div class="card-header main">Leave History</div>
+    <div class="card-body">
+      <div class="card">
+        <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Leave Date</th>
+              <th> Reason</th>
+              <th>Leave Status</th>
+          </tr>
+          {% for i in leave_details %}
+          <tbody>
+            <td>{{i.id}}</td>
+            <td>{{i.leave_date}}</td>
+            <td>{{i.leave_message}}</td>
+            <td>   {% if i.leave_status == 1 %}
+                                    <span class="alert alert-success">Approved</span>
+                                {% elif i.leave_status == 2 %}
+                                    <span class="alert alert-danger">Rejected</span>
+                                {% else %}
+                                    <span class="alert alert-info">Pending</span>
+                                {% endif %}</td>
+
+          </tbody>
+          {% endfor%}
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+      </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+{% endblock %}

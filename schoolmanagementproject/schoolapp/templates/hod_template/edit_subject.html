@@ -1,0 +1,54 @@
+{%extends 'hod_template/base_template.html'%}
+{% load static%}
+{% block base%}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/staff_style.css" %}">
+
+{% endblock custom_css %}
+{% include 'hod_template/messages.html'%}
+
+<h3 class='head'>Edit Subject Details | Subject Id:{{subject.id}}</h3>
+
+<div class="container">
+
+<div class="card mt-4">
+  <div class="card-header main">Subject Detail </div>
+  <div class="card-body">
+
+    <form class="needs-validation"  method='POST' novalidate>
+      <div class="form-group">
+        <label for="validationCustom10">Subject Name</label>
+        <input type="text" class="form-control" name="subject_name" value="{{subject.subject_name}}">
+        <input type="hidden" class="form-control" name="subject_id" placeholder="Enter Subject" value="{{ subject.id }}">
+          <div class="invalid-feedback">
+            Please provide valid subject.
+          </div>
+      </div>
+
+      <div class="form-group">
+                    <label>Course </label>
+                    <select class="form-control" name="course">
+                        {% for course in courses %}
+                              <option value="{{ course.id }}" {% if course.id == subject.course_id.id %} selected {% endif %}>{{ course.course_name }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+
+      <div class="form-group">
+        <label for="validationCustom10">Staff Name</label>
+        <select class="form-control" name='staff'>
+          {% for staff in staffs %}
+          <option value="{{ staff.id }}" {% if staff.id == subject.staff_id.id %} selected {% endif %}>{{ staff.first_name }}{{staff.last_name}} </option>
+          {%endfor%}
+
+  </select>
+      </div>
+
+  <button class="btn btn-primary btn-block" typea="submit">Update Subject</button>
+  {%csrf_token%}
+</form>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

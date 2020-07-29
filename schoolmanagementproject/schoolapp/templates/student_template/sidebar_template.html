@@ -1,0 +1,32 @@
+{%load static %}
+<nav id="sidebar">
+
+
+    <div class="sidebar-header line">
+
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+     <div class="image">
+       <img src="{% static "images/admin1.png" %}" class="img-circle elevation-2" alt="User Image">
+     </div>&nbsp;&nbsp;&nbsp;
+     <div class="info mt-3">
+       <a href="{% url 'student_profile' %}" class="d-block">{{ user.username }}</a>
+     </div>
+   </div>
+        <!-- <hr class='line'> -->
+    </div>
+
+
+    <ul class="list-unstyled components">
+
+            <li class='active'><a href="{%url 'student_home'%}"><i class="nav-icon fas fa-th"></i>   Home</a></li>
+            <li class='active'><a href="{% url 'student_attendance_view'%}"><i class="nav-icon fas fa-th"></i>   View Attendance</a></li>
+            <li class='active'><a href="{%url 'student_apply_leave' %}"><i class="nav-icon fas fa-th"></i>   Apply Leave</a></li>
+            <li class='active'><a href="{%url 'student_feedback'%}"><i class="nav-icon fas fa-th"></i>   Feedback</a></li>
+            <li class='active'><a href="{%url 'student_grade' %}"><i class="nav-icon fas fa-th"></i> Grade Card</a></li>
+            <li class='active'><a href="{%url 'student_notification'%}"><i class="nav-icon fas fa-th"></i>   Notifications</a></li>
+
+
+    </ul>
+
+
+</nav>

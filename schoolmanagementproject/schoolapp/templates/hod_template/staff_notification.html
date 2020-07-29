@@ -1,0 +1,60 @@
+{%extends 'hod_template/base_template.html'%}
+{% load static%}
+{% block base%}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/staff_style.css" %}">
+
+{% endblock custom_css %}
+
+<h3 class='head'>Staff Notification Details</h3>
+<div class="container">
+{% include "hod_template/messages.html" %}
+<div class="card mt-4">
+  <div class="card-header main">Staff Details</div>
+  <div class="card-body">
+    <div class="card">
+      <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th >User Name</th>
+          <th >Email</th>
+          <th > Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for staff in staffs %}
+        <tr>
+          <td>{{staff.admin.id}}</td>
+          <td>{{staff.admin.first_name}}</td>
+          <td>{{staff.admin.last_name}}</td>
+          <td>{{staff.admin.username}}</td>
+          <td>{{staff.admin.email}}</td>
+
+          <td>
+            <form  method="POST">
+              {%csrf_token%}
+            <div class="row">
+              <input type="hidden" name="staff_id" value={{staff.admin.id}}>
+              <input type="text" name="message" value="" class="form-control col-lg-6" placeholder="Your Message..">
+              <button type="submit" name="button" class='btn btn-success col-sm-2' >Send</button>
+
+            </div>
+            </form>
+          </td>
+        </tr>
+        {%endfor%}
+
+
+      </tbody>
+    </table>
+    </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}

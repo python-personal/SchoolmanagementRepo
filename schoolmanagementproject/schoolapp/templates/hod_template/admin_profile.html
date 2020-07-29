@@ -1,0 +1,53 @@
+{%extends 'hod_template/base_template.html'%}
+{% load static%}
+{% block base%}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/staff_style.css" %}">
+
+{% endblock custom_css %}
+{% include 'hod_template/messages.html'%}
+
+<h3 class='head'>Edit Profile</h3>
+
+<div class="container">
+
+<div class="card mt-4">
+  <div class="card-header main">Edit Profile</div>
+  <div class="card-body">
+
+    <form   method='POST' novalidate>
+      <div class="form-group">
+        {%csrf_token%}
+        <label for="validationCustom10">Username</label>
+        <input type="hidden" name="user_id" value="">
+        <input type="text" class="form-control" name="username" value={{user.username}} disabled>
+      </div>
+      <div class="form-group">
+        {%csrf_token%}
+        <label for="validationCustom10">email</label>
+        <input type="text" class="form-control" name="username" value={{user.email}} disabled>
+      </div>
+      <div class="form-group">
+        {%csrf_token%}
+        <label for="validationCustom10">First Name</label>
+        <input type="text" class="form-control" name="first_name" value={{user.first_name}}>
+      </div>
+      <div class="form-group">
+        {%csrf_token%}
+        <label for="validationCustom10">Last Name</label>
+        <input type="text" class="form-control" name="last_name" value={{user.last_name}}>
+      </div>
+      <div class="form-group">
+        {%csrf_token%}
+        <label for="validationCustom10">Change Password?</label>
+        <input type="password" class="form-control" name="password"  value="{{user.password}}" disabled>
+      </div>
+
+  <button class="btn btn-primary btn-block" type="submit">Save Profile</button>
+  {%csrf_token%}
+</form>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

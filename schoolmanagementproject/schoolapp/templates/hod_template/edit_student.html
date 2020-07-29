@@ -1,0 +1,24 @@
+{%extends 'hod_template/base_template.html'%}
+{% load static%}
+{% block base%}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/staff_style.css" %}">
+
+{% endblock custom_css %}
+{% include 'hod_template/messages.html'%}
+
+<h3 class='head'>Edit Student Details</h3>
+
+<div class="container">
+
+<div class="card mt-4">
+  <div class="card-header main">Student Detail </div>
+  <div class="card-body">
+
+    {% url 'edit_student' as action_path %}
+    {% include 'hod_template/form.html' with messages=messages form=form action=action_path button_text="Edit Student" %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}

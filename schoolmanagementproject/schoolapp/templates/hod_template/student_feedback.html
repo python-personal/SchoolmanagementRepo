@@ -1,0 +1,65 @@
+{%extends 'hod_template/base_template.html'%}
+{% load static%}
+{% block base%}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/staff_style.css" %}">
+
+{% endblock custom_css %}
+
+<h3 class='head'>Student Feedback Details</h3>
+<div class="container">
+
+<div class="card mt-4">
+  <div class="card-header main">Staff Details</div>
+  <div class="card-body">
+
+          <div class="card">
+      <div class="table">
+                         <table class="table">
+                             <tr>
+                                 <th>ID</th>
+                                 <th>Student ID</th>
+                                 <th>Student Name</th>
+                                 <th>Student Session</th>
+                                 <th>Message</th>
+                                 <th>Sended On</th>
+                                 <th>Reply</th>
+                             </tr>
+                             {% for feedback in students %}
+                             <tr>
+                                 <td>{{ feedback.id }}</td>
+                                 <td>{{ feedback.student_id.admin.id }}</td>
+                                 <td>{{ feedback.student_id.admin.first_name }} {{ feedback.student_id.admin.last_name }}</td>
+                                 <td>{{ feedback.student_id.session_year_id.session_start_year }} - {{ feedback.student_id.session_year_id.session_end_year }}</td>
+                                 <td>{{ feedback.feedback }}</td>
+                                 <td>{{ feedback.created_at }}</td>
+                                 <td>
+                                   <form class=""  method="POST">
+                                     {%csrf_token%}
+                                     {% if feedback.feedback_reply == "" %}
+                                     <div class="row">
+
+                                     <input type="hidden"  name="id" value="{{feedback.id}}">
+
+                                     <input type="text" name="feedback_reply" value="" class='form-control col-lg-6'  placeholder="Your reply">
+                                     <button type="submit"  class="btn btn-success">Reply</button>
+                                   </div>
+
+                                     {% else %}
+                                     {{ feedback.feedback_reply }}
+                                     {% endif %}
+                                      </form>
+                                 </td>
+
+                             </tr>
+                             {% endfor %}
+                         </table>
+
+    </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}

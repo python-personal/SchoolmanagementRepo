@@ -1,0 +1,42 @@
+{%extends 'hod_template/base_template.html'%}
+{% load static%}
+{% block base%}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/staff_style.css" %}">
+
+{% endblock custom_css %}
+{% include 'hod_template/messages.html'%}
+
+<h3 class='head'>Add Session Year</h3>
+
+<div class="container">
+
+<div class="card mt-4">
+  <div class="card-header main">Add Session Year</div>
+  <div class="card-body">
+
+    <form class="needs-validation"  method='POST' novalidate>
+      <div class="form-group">
+        <label for="validationCustom10">Session Start Year</label>
+        <input type="date" class="form-control" name="start_year"  placeholder="mm/dd/yy" type="datetime-local" >
+          <div class="invalid-feedback">
+            Please provide valid Date.
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="validationCustom10">Session End Year</label>
+        <input type="date" class="form-control" name="end_year"  placeholder="mm/dd/yy" type="datetime-local" >
+          <div class="invalid-feedback">
+            Please provide valid Date.
+          </div>
+      </div>
+
+  <button class="btn btn-primary btn-block" typea="submit">Add Year</button>
+  {%csrf_token%}
+</form>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+from django.urls import path,include
+from schoolapp import views as view,hodviews,staffviews,studentviews
+urlpatterns = [
+    path('accounts/',include('django.contrib.auth.urls')),
+    path('',view.ShowLoginPage,name='show_login'),
+    path('doLogin',view.doLogin,name="do_login"),
+    path('logout/',view.logout_view,name='logout'),
+    path('admin_home/', hodviews.HomeView,name='admin_home'),
+    path('add_staff/',hodviews.add_staff_view,name='add_staff'),
+    path('add_course/',hodviews.add_course_view,name='add_course'),
+    path('add_subject/',hodviews.add_subject_view,name='add_subject'),
+    path('add_student', hodviews.add_student_view,name="add_student"),
+    path('manage_staff/',hodviews.manage_staff_view,name='manage_staff'),
+    path('manage_course/',hodviews.manage_course_view,name='manage_course'),
+    path('manage_subject/',hodviews.manage_subject_view,name='manage_subject'),
+    path('manage_session/',hodviews.manage_session_view,name='manage_session'),
+    path('manage_student/',hodviews.manage_student_view,name='manage_student'),
+    path('edit_staff/<int:staff_id>/',hodviews.edit_staff_view,name='edit_staff'),
+    path('edit_subject/<int:subject_id>/',hodviews.edit_subject_view,name='edit_subject'),
+    path('edit_course/<int:course_id>/',hodviews.edit_course_view,name='edit_course'),
+    path('edit_student/<int:student_id>/',hodviews.edit_student_view,name='edit_student'),
+    path('admin_profile/',hodviews.admin_profile,name="admin_profile"),
+    path('admin_student_feedback',hodviews.student_feedback_view,name="admin_student_feedback"),
+    path('admin_staff_feedback',hodviews.staff_feedback_view,name='admin_staff_feedback'),
+    path('admin_student_leave',hodviews.student_leave_view,name="admin_student_leave"),
+    path('approve_student_leave/<int:leave_id>/',hodviews.approve_student_leave_view,name="approve_student_leave"),
+    path('disapprove_student_leave/<int:leave_id>/',hodviews.disapprove_student_leave_view,name="disapprove_student_leave"),
+    path('admin_staff_leave/',hodviews.staff_leave_view, name="admin_staff_leave"),
+    path('approve_staff_leave/<int:leave_id>/',hodviews.approve_staff_leave_view,name="approve_staff_leave"),
+    path('disapprove_staff_leave/<int:leave_id>/',hodviews.disapprove_staff_leave_view,name="disapprove_staff_leave"),
+    path('admin_staff_notification/',hodviews.staff_notification_view,name="admin_staff_notification"),
+    path('admin_student_notification/',hodviews.student_notification_view,name="admin_student_notification"),
+    path('view_attendance/',hodviews.view_attendance_view,name="view_attendance"),
+    path('admin_get_attendance_dates', hodviews.admin_get_attendance_dates,name="admin_get_attendance_dates"),
+    path('admin_get_attendance_student', hodviews.admin_get_attendance_student,name="admin_get_attendance_student"),
+
+
+
+    # staff
+    path('staff_home/',staffviews.StaffView,name='staff_home'),
+    path('take_attendance/',staffviews.staff_take_attendance,name='take_attendance'),
+    path('get_students/', staffviews.get_students, name="get_students"),
+    path('save_attendance_data/', staffviews.save_attendance_data, name="save_attendance_data"),
+    path('staff_update_attendance/', staffviews.staff_update_attendance, name="staff_update_attendance"),
+    path('get_attendance_dates/', staffviews.get_attendance_dates, name="get_attendance_dates"),
+    path('get_attendance_student/', staffviews.get_attendance_student, name="get_attendance_student"),
+    path('save_updateattendance_data/', staffviews.save_updateattendance_data, name="save_updateattendance_data"),
+    path('staff_leave/',staffviews.staff_leave_view,name="staff_leave"),
+    path('staff_feedback/',staffviews.staff_feedback_view,name="staff_feedback"),
+    path("staff_add_result/",staffviews.staff_add_result,name="staff_add_result"),
+    path('save_student_result/', staffviews.save_student_result, name="save_student_result"),
+    path('staff_edit_results/',staffviews.staff_edit_result,name="staff_edit_results"),
+    path('staff_notification/',staffviews.staff_notication_view,name="staff_notification"),
+    path('staff_profile/',staffviews.staff_profile_view,name="staff_profile"),
+    # student
+    path('student_home/',studentviews.student_home_view,name="student_home"),
+    path('student_attendance_view/',studentviews.student_attendance_view,name='student_attendance_view'),
+    path('student_view_attendance_post',studentviews.student_view_attendance_post,name="student_view_attendance_post"),
+    path('student_apply_leave',studentviews.student_apply_leave,name="student_apply_leave"),
+    path('student_feedback',studentviews.student_feedback,name="student_feedback"),
+    path('student_grade',studentviews.student_grade_view,name="student_grade"),
+    path('student_notification/',studentviews.student_notication_view,name="student_notification"),
+    path('student_profile/',studentviews.student_profile_view,name='student_profile'),
+
+
+
+    ]

@@ -1,0 +1,35 @@
+{%load static %}
+<nav id="sidebar">
+
+
+    <div class="sidebar-header line">
+
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+     <div class="image">
+       <img src="{% static "images/admin1.png" %}" class="img-circle elevation-2" alt="User Image">
+     </div>&nbsp;&nbsp;&nbsp;
+     <div class="info mt-3">
+       <a href="{% url 'staff_profile' %}" class="d-block">{{ user.username }}</a>
+     </div>
+   </div>
+        <!-- <hr class='line'> -->
+    </div>
+
+
+    <ul class="list-unstyled components">
+
+            <li class='active'><a href="{%url 'staff_home'%}"><i class="nav-icon fas fa-th"></i>   Home</a></li>
+            <li class='active'><a href="{%url 'take_attendance'%}"><i class="nav-icon fas fa-th"></i>   Take Attendance</a></li>
+            <li class='active'><a href="{%url 'staff_update_attendance' %}"><i class="nav-icon fas fa-th"></i>   View Update Attendance</a></li>
+            <li class='active'><a href="{% url 'staff_leave'%}"><i class="nav-icon fas fa-th"></i>   Apply Leave</a></li>
+            <li class='active'><a href="{%url 'staff_feedback'%}"><i class="nav-icon fas fa-th"></i>   Feedback</a></li>
+            <li class='active'><a href="{%url 'staff_add_result'%}"><i class="nav-icon fas fa-th"></i>   Add Result</a></li>
+            <li class='active'><a href="{%url 'staff_edit_results' %}"><i class="nav-icon fas fa-th"></i>   Edit Result</a></li>
+            <li class='active'><a href="#"><i class="nav-icon fas fa-th"></i>   Start Live Class Room </a></li>
+            <li class='active'><a href="{%url 'staff_notification'%}"><i class="nav-icon fas fa-th"></i>   Notifications</a></li>
+
+
+    </ul>
+
+
+</nav>

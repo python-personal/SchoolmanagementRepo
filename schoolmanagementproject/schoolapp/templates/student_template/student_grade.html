@@ -1,0 +1,51 @@
+{%extends 'student_template/base_template.html'%}
+{% load static%}
+{% block base%}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/staff_style.css" %}">
+
+{% endblock custom_css %}
+{% include 'hod_template/messages.html'%}
+
+<h3 class='head'>Result</h3>
+
+<div class="container">
+  <div class="card mt-4">
+    <div class="card-header main">Result</div>
+    <div class="card-body">
+      <div class="card">
+        <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Subject</th>
+              <th> Assignment Marks</th>
+              <th>Exam Marks</th>
+          </tr>
+          {% for i in student_details %}
+          <tbody>
+            <td>{{i.id}}</td>
+            <td>{{i.subject_id.subject_name}}</td>
+            <td>{{i.subject_assignment_marks}}</td>
+            <td>   {% if i.subject_exam_marks >= 40 %}
+                                    <span class="btn btn-success">Pass</span>
+                                {% else %}
+                                    <span class="btn btn-danger">Fail</span>
+                                {% endif %}</td>
+
+          </tbody>
+          {% endfor%}
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+      </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{%extends 'staff_template/base_template.html'%}
+{% load static%}
+{% block base%}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/staff_style.css' %}">
+{% endblock custom_css %}
+{% include 'hod_template/messages.html'%}
+<h3 class='head'>Staff Notification Details</h3>
+
+<div class="container">
+
+  <div class="card mt-4">
+    <div class="card-header main">Notifications</div>
+    <div class="card-body">
+       <div class="form-group">
+         <table>
+           <tr><th>Messages</th></tr>
+           {%for staff in staffs %}
+           <tr><td>{{staff.message}}</td></tr>
+           {%endfor%}
+         </table>
+
+              </div>
+</div></div></div>
+{% endblock  %}

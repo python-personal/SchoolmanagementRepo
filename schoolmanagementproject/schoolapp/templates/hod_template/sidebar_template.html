@@ -1,0 +1,40 @@
+{%load static %}
+<nav id="sidebar">
+    <div class="sidebar-header line">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+     <div class="image">
+       <img src="{% static "images/admin1.png" %}" class="img-circle elevation-2" alt="User Image">
+     </div>&nbsp;&nbsp;&nbsp;
+     <div class="info mt-3">
+       <a href="{% url 'admin_profile' %}" class="d-block">{{ user.username }}</a>
+     </div>
+   </div>
+        <hr class='line'>
+    </div>
+
+
+    <ul class="list-unstyled components">
+
+        <li class='active'><a href="{%url 'admin_home'%}"><i class="nav-icon fas fa-th"></i>       Home</a></li>
+            <li class='active'><a href="{%url 'add_staff'%}"><i class="nav-icon fas fa-th"></i>   Add staff</a></li>
+            <li class='active'><a href="{%url 'manage_staff'%}"><i class="nav-icon fas fa-th"></i>   Manage Staff</a></li>
+            <li class='active'><a href="{%url 'add_student'%}"><i class="nav-icon fas fa-th"></i>   Add Student</a></li>
+            <li class='active'><a href="{%url 'manage_student'%}"><i class="nav-icon fas fa-th"></i>   Manage Student</a></li>
+            <li class='active'><a href="{% url 'add_course'%}"><i class="nav-icon fas fa-th"></i>   Add Course</a></li>
+            <li class='active'><a href="{% url 'manage_course'%}"><i class="nav-icon fas fa-th"></i>   Manage Course</a></li>
+            <li class='active'><a href="{%url 'add_subject'%}"><i class="nav-icon fas fa-th"></i>   Add Subject</a></li>
+            <li class='active'><a href="{%url 'manage_subject'%}"><i class="nav-icon fas fa-th"></i>   Manage Subject</a></li>
+            <li class='active'><a href="{% url 'manage_session'%}"><i class="nav-icon fas fa-th"></i>   Manage Session Year</a></li>
+            <li class='active'><a href="{%url 'admin_student_feedback'%}"><i class="nav-icon fas fa-th"></i>   Student Feedback</a></li>
+            <li class='active'><a href="{%url 'admin_staff_feedback'%}"><i class="nav-icon fas fa-th"></i>   Staff Feedback</a></li>
+            <li class='active'><a href="{% url 'admin_student_leave'%}"><i class="nav-icon fas fa-th"></i>   Student Leave</a></li>
+            <li class='active'><a href="{%url 'admin_staff_leave' %}"><i class="nav-icon fas fa-th"></i>   Staff Leave</a></li>
+            <li class='active'><a href="{%url 'view_attendance'%}"><i class="nav-icon fas fa-th"></i>   View Attendance</a></li>
+            <li class='active'><a href="{%url 'admin_staff_notification'%}"><i class="nav-icon fas fa-th"></i>   Send Staff Notification</a></li>
+            <li class='active'><a href="{%url 'admin_student_notification'%}"><i class="nav-icon fas fa-th"></i>   Send Student Notification</a></li>
+
+
+    </ul>
+
+
+</nav>

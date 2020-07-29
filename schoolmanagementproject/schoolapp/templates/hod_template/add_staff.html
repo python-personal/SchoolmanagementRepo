@@ -1,0 +1,69 @@
+{%extends 'hod_template/base_template.html'%}
+{% load static%}
+{% block base%}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/staff_style.css" %}">
+
+{% endblock custom_css %}
+{% include 'hod_template/messages.html'%}
+
+<h3 class='head'>Add Staff Details</h3>
+
+<div class="container">
+
+<div class="card mt-4">
+  <div class="card-header main">Staff Detail Form</div>
+  <div class="card-body">
+
+    <form class="needs-validation"  method='POST' novalidate>
+      <div class="form-group">
+        <label for="validationCustom10">Email Address</label>
+        <input type="email" class="form-control" name="email" placeholder="Enter email" id="id_email" autocomplete="off">
+          <div class="invalid-feedback">
+            Please provide valid email.
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="validationCustom11">Password</label>
+        <input type="password" class="form-control" id="validationCustom11" name="password" placeholder="Password" required >
+          <div class="invalid-feedback">
+            Please provide valid password.
+          </div>
+      </div>
+
+    <div class="form-group">
+      <label for="validationCustom01">First name</label>
+      <input type="text" class="form-control" id="validationCustom01"  name="first_name" placeholder="First name" required>
+        <div class="invalid-feedback">
+          Please provide valid firstname.
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="validationCustom02">Last name</label>
+      <input type="text" class="form-control" id="validationCustom02" name="last_name" placeholder="Last name" required>
+        <div class="invalid-feedback">
+  Please provide valid lastname.
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="validationCustom20">User name</label>
+      <input type="text" class="form-control" id="validationCustom20" name="username" placeholder="User name" required>
+        <div class="invalid-feedback">
+  Please provide valid username.
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="validationCustom03">Address</label>
+      <input type="text" class="form-control" id="validationCustom03" name="address" placeholder="Address" required>
+      <div class="invalid-feedback">
+        Please provide a valid Address.
+      </div>
+    </div>
+  <button class="btn btn-primary btn-block" type="submit">Submit form</button>
+  {%csrf_token%}
+</form>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

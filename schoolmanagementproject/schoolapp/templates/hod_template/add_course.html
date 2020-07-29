@@ -1,0 +1,35 @@
+{%extends 'hod_template/base_template.html'%}
+{% load static%}
+{% block base%}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/staff_style.css" %}">
+
+{% endblock custom_css %}
+{% include 'hod_template/messages.html'%}
+
+<h3 class='head'>Add Course Details</h3>
+
+<div class="container">
+
+<div class="card mt-4">
+  <div class="card-header main">Course Detail Form</div>
+  <div class="card-body">
+
+    <form class="needs-validation"  method='POST' novalidate>
+      <div class="form-group">
+        {%csrf_token%}
+        <label for="validationCustom10">Course Name</label>
+        <input type="text" class="form-control" name="course_name" placeholder="Enter Course Name" id="id_course">
+          <div class="invalid-feedback">
+            Please provide valid Course.
+          </div>
+      </div>
+
+  <button class="btn btn-primary btn-block" type="submit">Add Course</button>
+  {%csrf_token%}
+</form>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

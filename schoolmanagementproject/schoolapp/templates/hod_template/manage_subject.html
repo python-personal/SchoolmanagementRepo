@@ -1,0 +1,46 @@
+{%extends 'hod_template/base_template.html'%}
+{% load static%}
+{% block base%}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/staff_style.css" %}">
+
+{% endblock custom_css %}
+
+<h3 class='head'>Manage Subject Details</h3>
+<div class="container">
+
+<div class="card mt-4">
+  <div class="card-header main">Subject Details</div>
+  <div class="card-body">
+    <div class="card">
+      <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Subject Name</th>
+          <th>Course Name</th>
+          <th >Staff Name</th>
+          <th > Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for subject in subjects %}
+        <tr>
+          <td>{{subject.id}}</td>
+          <td>{{subject.subject_name}}</td>
+          <td>{{subject.course_id.course_name}}</td>
+          <td>{{subject.staff_id}}</td>
+
+          <td><a href="{% url 'edit_subject' subject.id %}" role="button" name="button" class='btn btn-success btn-sm'>Edit</a></td>
+        </tr>
+        {%endfor%}
+
+      </tbody>
+    </table>
+    </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}

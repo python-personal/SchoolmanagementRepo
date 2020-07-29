@@ -1,0 +1,60 @@
+{%extends 'hod_template/base_template.html'%}
+{% load static%}
+{% block base%}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/staff_style.css" %}">
+
+{% endblock custom_css %}
+
+<h3 class='head'>Student Leave Details</h3>
+<div class="container">
+
+<div class="card mt-4">
+  <div class="card-header main">Student Details</div>
+  <div class="card-body">
+
+          <div class="card">
+      <div class="table">
+                         <table class="table">
+                             <tr>
+                                 <th>ID</th>
+                                 <th>Student ID</th>
+                                 <th>Student Name</th>
+                                 <th>Leave Date</th>
+                                 <th>Leave Message</th>
+                                 <th>Applied On</th>
+                                 <th>Action</th>
+                             </tr>
+
+                             {% for student in students %}
+                             <tr>
+
+                                 <td>{{ student.id }}</td>
+                                 <td>{{ student.student_id.admin.id }}</td>
+                                 <td>{{ student.student_id.admin.first_name}} {{ student.student_id.admin.last_name}} </td>
+                                 <td>{{ student.leave_date }}</td>
+                                 <td>{{ student.leave_message }}</td>
+                                 <td>{{student.created_at}}</td>
+                                 <td>
+                                   {% if student.leave_status == 0 %}
+                                       <a href="{% url 'approve_student_leave' leave_id=student.id %}" class="btn btn-success" role="button">Approve</a>&nbsp;&nbsp;&nbsp;
+                                       <a href="{% url 'disapprove_student_leave' leave_id=student.id %}" class="btn btn-danger" role="button">Disapprove</a>
+                                       {% elif student.leave_status == 1 %}
+                                       <button type="button" name="button" class="btn btn-warning" disabled="disabled">Approved</button>
+                                       {%else%}
+                                       <button type="button" name="button" class="btn btn-danger" disabled="disabled">Rejected</button>
+                                       {%endif%}
+                                 </td>
+
+                             </tr>
+                             {% endfor %}
+                         </table>
+
+    </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}
